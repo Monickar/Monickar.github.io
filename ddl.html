@@ -1,0 +1,328 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Conference DDL Timeline</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #f8f9fa;
+            padding-top: 60px;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 60px;
+            background-color: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            z-index: 1000;
+        }
+
+        .navbar-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+            height: 100%;
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar-brand {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: #333;
+            text-decoration: none;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .conference-item {
+            width: 100%;  /* 确保卡片占满容器宽度 */
+            margin-bottom: 0;
+            padding: 20px;
+            border-radius: 8px;
+            background-color: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .conference-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        .conference-info {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        .deadline-info {
+            margin-top: 15px;
+        }
+        .countdown {
+            font-size: 1.2rem;
+            color: #dc3545;
+            font-weight: bold;
+        }
+        .timeline-container {
+            padding: 0 40px;
+            margin-top: 15px;
+            margin-bottom: 30px;
+            position: relative;
+        }
+        .progress {
+            height: 4px;
+            margin: 8px 0;
+            background-color: #e9ecef;
+            position: relative;
+        }
+        .progress-bar {
+            background-color: #e9ecef;  /* 过去的日期显示灰色 */
+        }
+        .progress-bar.future {
+            background-color: #007bff;  /* 未来的日期显示蓝色 */
+        }
+        .date-markers {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8rem;
+            color: #666;
+            position: relative;
+        }
+        .timeline-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: #e9ecef;
+            position: absolute;
+            top: -4px;
+            transform: translateX(-50%);
+        }
+        .timeline-dot.past {
+            background-color: #e9ecef;  /* 过去的点显示灰色 */
+        }
+        .timeline-dot.today {
+            background-color: #ffc107;  /* 今天的点显示黄色 */
+            border: 2px solid #fff;
+            box-shadow: 0 0 0 2px #ffc107;
+        }
+        .timeline-dot.future {
+            background-color: #007bff;  /* 未来的点显示蓝色 */
+        }
+        .date-label {
+            position: absolute;
+            transform: translateX(-50%);
+            top: 15px;
+            background-color: white;
+            padding: 2px 8px;
+            border-radius: 4px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        .ccf-tag {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            margin-right: 8px;
+            background-color: #e9ecef;
+        }
+        .note {
+            color: #007bff;
+            font-size: 0.9rem;
+            margin-top: 5px;
+        }
+        /* 添加灰色样式 */
+        .conference-item.expired {
+            opacity: 0.6;
+            background-color: #f8f9fa;
+        }
+
+        /* 只在有内容时显示相关信息 */
+        .conference-info:empty,
+        .note:empty {
+            display: none;
+        }
+
+        .hidden-link {
+            color: inherit;
+            text-decoration: none;
+            cursor: default;
+        }
+
+        .hidden-link:hover {
+            color: inherit;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-content">
+            <a href="#" class="navbar-brand">Conference DDL Timeline</a>
+        </div>
+    </nav>
+
+    <div class="container">
+    
+        <!-- 可以添加更多会议 -->
+    </div>
+
+    <script>
+        // 修改会议数据结构，使某些字段可选
+        const conferences = [
+        <!-- df -->
+        {
+            name: "IJCNN 2025",
+            type: "conference",  // 新增类型字段
+            starred: true,
+            ccf: "CCF C",
+            date: "July 14-19, 2025",
+            fullName: "International Joint Conference on Neural Networks",
+            deadline: "2025-01-15T23:59:59+23:00",
+            website: "https://2025.ijcnn.org/",
+            abstractDeadline: "2024-12-10",
+            note: "Notification: 2025-03-31",
+            
+        },
+        {
+            name: "ICICS 2025",
+            type: "conference",  // 新增类型字段
+            starred: true,
+            location: "Nanjing, China",
+            date: "October 29-31, 2025",
+            note: "The 27th edition of ICICS series since 1997",
+            ccf: "CCF C",
+            fullName: "International Conference on Information and Communications Security",
+            deadline: "2025-02-28T23:59:59+23:00",
+            website: "https://www.icics2025.org/",
+            abstractDeadline: "2024-12-02",
+            note: "First Notification: 2025-04-28, Second round Submission: 2025-05-23",
+        }
+
+            // ... 其他会议或DDL
+        ];
+
+        // 修改生成HTML的函数
+        function createConferenceElement(conf) {
+            const deadlineDate = new Date(conf.deadline);
+            const abstractDate = conf.abstractDeadline ? new Date(conf.abstractDeadline) : null;
+            const today = new Date();
+            const isExpired = deadlineDate < today;
+            
+            // 计算进度条位置（仅当有abstract deadline时）
+            let progress = 0;
+            if (abstractDate) {
+                const totalDays = (deadlineDate - abstractDate) / (1000 * 60 * 60 * 24);
+                const passedDays = (today - abstractDate) / (1000 * 60 * 60 * 24);
+                progress = Math.min(Math.max((passedDays / totalDays) * 100, 0), 100);
+            }
+
+            const html = `
+                <div class="conference-item ${isExpired ? 'expired' : ''}">
+                    <div class="conference-title">
+                        ${conf.name} ${conf.starred ? '⭐' : ''}
+                        ${conf.ccf ? `<span class="ccf-tag">${conf.ccf}</span>` : ''}
+                        ${conf.core ? `<span class="ccf-tag">${conf.core}</span>` : ''}
+                    </div>
+                    ${conf.date || conf.location || conf.fullName ? `
+                        <div class="conference-info">
+                            ${conf.date ? `${conf.date}` : ''} ${conf.location ? `${conf.location}` : ''}<br>
+                            ${conf.fullName ? `${conf.fullName}` : ''}
+                        </div>
+                    ` : ''}
+                    <div class="deadline-info">
+                        ${isExpired ? 
+                            `<div class="countdown">Deadline Passed</div>` :
+                            `<div class="countdown" data-deadline="${conf.deadline}">Loading...</div>`
+                        }
+                        <div>Deadline: ${new Date(conf.deadline).toLocaleString()}</div>
+                        ${conf.website ? `<div>Website: <a href="${conf.website}" target="_blank">${conf.website}</a></div>` : ''}
+                        ${conf.note ? `<div class="note">NOTE: ${conf.note}</div>` : ''}
+                        ${abstractDate ? `
+                            <div class="timeline-container">
+                                <div class="progress">
+                                    <div class="progress-bar" style="width: ${progress}%"></div>
+                                    <div class="progress-bar future" style="width: ${100 - progress}%"></div>
+                                    
+                                    <div class="timeline-dot past" style="left: 0%"></div>
+                                    <div class="timeline-dot today" style="left: ${progress}%"></div>
+                                    <div class="timeline-dot future" style="left: 100%"></div>
+                                </div>
+                                
+                                <div class="date-markers">
+                                    <span class="date-label" style="left: 0%">${formatDate(abstractDate)}</span>
+                                    <span class="date-label" style="left: ${progress}%">${formatDate(today)}</span>
+                                    <span class="date-label" style="left: 100%">${formatDate(deadlineDate)}</span>
+                                </div>
+                            </div>
+                        ` : ''}
+                    </div>
+                </div>
+            `;
+            return html;
+        }
+
+        // 格式化日期的辅助函数
+        function formatDate(date) {
+            return `${(date.getMonth() + 1).toString().padStart(2, '0')}/${date.getDate().toString().padStart(2, '0')}`;
+        }
+
+        // 更新所有倒计时的函数
+        function updateAllCountdowns() {
+            document.querySelectorAll('.countdown').forEach(el => {
+                const deadline = new Date(el.dataset.deadline).getTime();
+                const now = new Date().getTime();
+                const distance = deadline - now;
+                
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                
+                el.innerHTML = `${days.toString().padStart(2, '0')} days ` +
+                              `${hours.toString().padStart(2, '0')} h ` +
+                              `${minutes.toString().padStart(2, '0')} m ` +
+                              `${seconds.toString().padStart(2, '0')} s`;
+            });
+        }
+
+        // 修改初始化函数，添加排序功能
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.querySelector('.container');
+            
+            // 对会议进行排序：未过期的在前，已过期的在后
+            const sortedConferences = conferences.sort((a, b) => {
+                const aExpired = new Date(a.deadline) < new Date();
+                const bExpired = new Date(b.deadline) < new Date();
+                if (aExpired === bExpired) {
+                    return new Date(a.deadline) - new Date(b.deadline);
+                }
+                return aExpired ? 1 : -1;
+            });
+
+            sortedConferences.forEach(conf => {
+                container.innerHTML += createConferenceElement(conf);
+            });
+
+            // 只为未过期的DDL更新倒计时
+            updateAllCountdowns();
+            setInterval(updateAllCountdowns, 1000);
+        });
+    </script>
+</body>
+</html> 
