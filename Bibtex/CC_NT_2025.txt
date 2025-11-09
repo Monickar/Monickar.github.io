@@ -1,0 +1,12 @@
+@article{du2024identificationpathcongestionstatus,
+title = {Identification of path congestion status for network performance tomography using deep spatial–temporal learning},
+journal = {Computer Communications},
+volume = {239},
+pages = {108194},
+year = {2025},
+issn = {0140-3664},
+doi = {https://doi.org/10.1016/j.comcom.2025.108194},
+url = {https://www.sciencedirect.com/science/article/pii/S0140366425001513},
+author = {Chengze Du and others},
+keywords = {Network tomography, Path congestion status, End-to-end measurement, LSTM, Adversarial autoencoders},
+}

@@ -1,0 +1,175 @@
+.name {
+  padding-top: 20px;
+  margin: 0;
+  font-family: 'Lato', Cambria, Georgia, serif;
+  font-size: 10px;
+  font-weight: bold;
+}
+
+.papertitle {
+  font-family: Cambria, Georgia, Helvetica, sans-serif;
+  font-size: 17px;
+  font-weight: 550;
+}
+
+.subtitle {
+  font-family:  Georgia, Helvetica, sans-serif;
+  font-size: 19px;
+  font-weight: 550;
+  color: #1e0202;
+  background-color: rgb(253, 248, 249)
+}
+
+.bodycolor {
+  background-color: #eae5e590;
+}
+
+a {
+    color: #0066cc; /* 设置链接颜色为蓝色 */
+    text-decoration: none; 
+}
+
+a:focus,
+
+a:hover {
+    text-decoration: underline; 
+    color: #f09228;
+}
+
+.text-with-border {
+border: 2px solid blue; /* 边框宽度为 2px，样式为实线，颜色为蓝色 */
+}
+/* 导航栏样式 */
+.navbar {
+  background-color: #ffffff;
+  padding: 15px 0;
+  border-bottom: 1px solid #eee;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.nav-container {
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-brand {
+  font-size: 1.5em;
+  font-weight: bold;
+  color: #333;
+  text-decoration: none;
+}
+
+.nav-links {
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links a {
+  color: #666;
+  text-decoration: none;
+  padding: 5px 10px;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: #1772D0;
+}
+
+/* 为了防止内容被导航栏遮挡 */
+body {
+  padding-top: 60px;
+}
+
+/* 修改图片切换相关的样式 */
+.one {
+  position: relative;
+  display: inline-block;
+}
+
+.one img {
+  position: absolute;
+  left: 0;
+  top: 0;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.one img.bottom {
+  z-index: 1;
+  position: relative;
+}
+
+.one img.top {
+  z-index: 2;
+}
+
+.one:hover img.top {
+  opacity: 0;
+}
+
+.hidden-link {
+  color: inherit;
+  text-decoration: none;
+  cursor: default;
+}
+
+.hidden-link:hover {
+  color: inherit;
+  text-decoration: none;
+}
+
+body {
+  font-size: 15px; /* 默认大小，可修改为所需值 */
+}
+
+body.dark {
+  background: #1a1a1a !important;
+  color: #e0e0e0 !important;
+}
+
+body.dark .navbar,
+body.dark table {
+  background: #2d2d2d !important;
+}
+
+body.dark a {
+  color: #66b3ff !important;
+}
+
+body.dark .nav-links a {
+  color: #b0b0b0 !important;
+}
+
+body.dark .nav-links a:hover {
+  color: #66b3ff !important;
+}
+
+body.dark .papertitle {
+  color: #66b3ff !important;
+}
+
+body.dark .year {
+  color: #66b3ff !important;
+}
+      
+
+.navbar {
+  width: 100%; /* 占满屏幕宽度 */
+}
+.nav-container {
+  display: flex;
+  justify-content: space-between; /* 内容左右分布 */
+  align-items: center;
+
+}
+
+.nav-links {
+  display: flex;
+  gap: 5px; /* 链接间添加间隔 */
+}
+

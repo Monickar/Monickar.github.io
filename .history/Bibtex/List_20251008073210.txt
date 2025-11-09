@@ -1,0 +1,24 @@
+@article{du2024identificationpathcongestionstatus,
+title = {Identification of path congestion status for network performance tomography using deep spatial–temporal learning},
+journal = {Computer Communications},
+volume = {239},
+pages = {108194},
+year = {2025},
+issn = {0140-3664},
+doi = {https://doi.org/10.1016/j.comcom.2025.108194},
+url = {https://www.sciencedirect.com/science/article/pii/S0140366425001513},
+author = {Chengze Du and others},
+keywords = {Network tomography, Path congestion status, End-to-end measurement, LSTM, Adversarial autoencoders},
+}
+
+@InProceedings{secureNT,
+author={Du, Chengze and Shi, Jibin and others},
+title={SecureNT: Smart Topology Obfuscation for Privacy-Aware Network Monitoring},
+booktitle={Advanced Intelligent Computing Technology and Applications},
+year={2025},
+publisher={Springer Nature Singapore},
+doi={https://doi.org/10.1007/978-981-96-9914-8_9}
+address={Singapore},
+pages={101--112},
+isbn={978-981-96-9914-8}
+}
